@@ -1,8 +1,68 @@
 # idea-to-app-spec
 
-`idea-to-app-spec` is a reusable workflow for turning rough app ideas into build-ready product specs, architecture decisions, implementation plans, and final AI development prompts.
+`idea-to-app-spec` is an installable AI workflow skill for turning rough ideas into a single delivery chain: spec, plan, one-shot prompt, implementation handoff, chronicle, and skill suggestions.
 
 It is designed for tools such as Codex, Claude Code, Cursor, and other coding agents.
+
+## What It Is
+
+This repository is not a single app and not a traditional framework.
+
+It is a workflow package that helps you:
+
+- turn a vague idea into a clear product spec
+- turn a spec into an execution plan
+- turn the plan into a one-shot development prompt
+- hand the prompt to an AI coding agent for implementation
+- record work as chronicle entries
+- detect repeated patterns
+- convert repeated work into reusable skills
+
+## What It Produces
+
+The main outputs are:
+
+- `spec.md` for product and technical direction
+- `plan.md` for execution steps and validation
+- `one-shot-prompt.md` for direct AI app generation
+- `implementation-handoff.md` for the next coding agent
+- `chronicle/*.md` for work history
+- `skill.md` for reusable workflows
+- template files for consistent use across tools
+
+## Main Chain
+
+Use one chain, not competing paths:
+
+```text
+idea -> spec -> plan -> one-shot prompt -> implementation handoff -> chronicle -> skill suggestion
+```
+
+The `one-shot prompt` is part of the chain. It is not a separate optional workflow.
+
+## Default Output Path
+
+Generated artifacts should be written to:
+
+```text
+ai-workflow/<project-slug>/
+```
+
+Recommended structure:
+
+```text
+ai-workflow/<project-slug>/
+├── spec.md
+├── plan.md
+├── one-shot-prompt.md
+├── implementation-handoff.md
+├── chronicle/
+│   └── YYYY-MM-DD.md
+└── skill-suggestions/
+    └── <skill-name>.md
+```
+
+This gives both the user and future AI agents one stable place to find the generated artifacts.
 
 ## What It Does
 
@@ -24,6 +84,8 @@ The workflow guides the conversation through:
 8. Development phases
 9. Validation criteria
 10. Final one-shot app generation prompt
+11. Implementation handoff
+12. Chronicle and skill suggestions when useful
 
 ## Repository Layout
 
@@ -36,13 +98,22 @@ idea-to-app-spec/
 │       └── references/
 ├── docs/
 │   ├── claude-code-usage.md
+│   ├── chronicle-skill-workflow-plan.md
+│   ├── chronicle-skill-workflow-usage.md
 │   └── prompt-workflow.md
 ├── templates/
+│   ├── chronicle-template.md
+│   ├── implementation-handoff-template.md
+│   ├── skill-suggestion-template.md
+│   ├── spec-to-one-shot-prompt-template.md
+│   ├── spec-to-task-template.md
 │   └── app-generation-prompt.md
 └── README.md
 ```
 
 ## Codex Installation
+
+This repository includes an installable Codex skill. Users do not need to manually read every document before using it.
 
 Copy the skill folder into your Codex skills directory:
 
@@ -56,9 +127,11 @@ Then start a new Codex session and ask:
 Use idea-to-app-spec. I have a rough app idea: ...
 ```
 
+The skill should produce artifacts under `ai-workflow/<project-slug>/` and ask before starting implementation.
+
 ## Claude Code Usage
 
-Claude Code does not use Codex `SKILL.md` files natively. Use the workflow as a project instruction or paste the concise workflow from:
+Claude Code does not use Codex `SKILL.md` files natively. Use this repository as a project instruction source or paste the concise workflow from:
 
 ```text
 docs/claude-code-usage.md
@@ -67,19 +140,35 @@ docs/claude-code-usage.md
 For a one-shot app generation prompt, use:
 
 ```text
-templates/app-generation-prompt.md
+ai-workflow/<project-slug>/one-shot-prompt.md
+```
+
+For implementation, point Claude Code at:
+
+```text
+ai-workflow/<project-slug>/implementation-handoff.md
 ```
 
 ## Recommended Workflow
 
 Do not start with a giant build prompt when the idea is still unclear.
 
-Use two phases:
+Use one ordered chain:
 
 ```text
-Explore: rough idea -> product shape -> core loop -> MVP
-Finalize: spec -> architecture -> implementation phases -> final build prompt
+rough idea -> product shape -> spec -> plan -> one-shot prompt -> implementation handoff
 ```
+
+After implementation work happens, continue the same chain with chronicle records and skill suggestions.
+
+Use:
+
+- `templates/spec-to-task-template.md` for execution planning
+- `templates/spec-to-one-shot-prompt-template.md` for direct AI app generation
+- `templates/chronicle-template.md` for work history records
+- `templates/skill-suggestion-template.md` for reusable skill drafts
+- `docs/chronicle-skill-workflow-plan.md` for the overall workflow design
+- `docs/chronicle-skill-workflow-usage.md` for Codex and Claude Code usage
 
 ## Example Trigger Prompts
 
@@ -97,6 +186,10 @@ Convert this natural-language idea into a one-shot AI development prompt.
 
 ```text
 I have a vague product idea. Ask me questions and help me shape it into something buildable.
+```
+
+```text
+Use idea-to-app-spec. Create the full delivery package under ai-workflow/<project-slug>/, then ask before implementation.
 ```
 
 ## Source Example
