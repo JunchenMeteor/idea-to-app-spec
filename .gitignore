@@ -5,3 +5,5 @@ node_modules/
 .env.local
 dist/
 build/
+ai-workflow/
+docs/english-conversation-coach-*.md
