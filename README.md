@@ -1,5 +1,7 @@
 # idea-to-app-spec
 
+Language: [English](README.md) | [中文](README.zh-CN.md)
+
 `idea-to-app-spec` is an installable AI workflow skill for turning rough ideas into a single delivery chain: spec, plan, one-shot prompt, implementation handoff, chronicle, and skill suggestions.
 
 It is designed for tools such as Codex, Claude Code, Cursor, and other coding agents.
