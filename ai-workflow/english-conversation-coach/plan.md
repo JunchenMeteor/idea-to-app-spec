@@ -24,7 +24,8 @@ Build the first runnable version as a cloud-accessible MVP with auth, scenario s
 11. Implement mock STT/TTS/AI services for local and cloud demo parity.
 12. Implement turn handling and correction item generation.
 13. Add session review, correction history, and optional learning/correction charts.
-14. Add validation tests for session lifecycle, mic state, preferences, workflow transitions, and correction output.
+14. Add optional retrieval support for scenario packs, correction history, and reusable phrase memory.
+15. Add validation tests for session lifecycle, mic state, preferences, workflow transitions, and correction output.
 
 ## AI Development Mode Mapping
 
@@ -33,6 +34,7 @@ Build the first runnable version as a cloud-accessible MVP with auth, scenario s
 - Vercel AI SDK: recommended streaming and model abstraction layer for a TypeScript app.
 - LangGraph: use directly inside the app for stateful voice coaching flow; isolate it behind a `conversationWorkflow` service boundary.
 - LangChain: optional utility layer for prompt templates, structured outputs, provider adapters, or later tool/RAG work; do not make it the center of v1.
+- Retrieval / RAG: treat as a Phase 4 enhancement; use it first for scenario packs and correction memory, not for the main chat loop.
 - Low-code platforms such as Dify/Coze/n8n: out of runtime scope for v1; acceptable only for external prototype or prompt validation.
 - AI coding tool SDKs such as Cursor/Claude/Copilot SDKs: out of app runtime scope; can be used later for developer automation, code review, or implementation workflows.
 
@@ -50,7 +52,8 @@ Build the first runnable version as a cloud-accessible MVP with auth, scenario s
 - Task 10: Add mock speech and AI provider abstractions.
 - Task 11: Add correction summary cards and replay actions.
 - Task 12: Add review/history pages and optional charts.
-- Task 13: Add tests and README setup instructions.
+- Task 13: Add optional retrieval support for scenario packs and correction memory.
+- Task 14: Add tests and README setup instructions.
 
 ## Pre-Dev Requirements
 

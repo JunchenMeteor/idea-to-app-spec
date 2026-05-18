@@ -29,6 +29,7 @@ user enters a scenario -> app listens during the active session -> speech is tra
 - English-first conversation UI
 - Chinese and English UI support outside the conversation area
 - Theme switching across the whole system
+- Optional retrieval-enhanced support for scenario packs, user history, and correction memory
 
 ## Non-Goals
 
@@ -86,6 +87,7 @@ Suggested fields:
 - AI reply generation
 - Correction summary retrieval
 - Theme and preference persistence
+- Optional retrieval search over scenario packs and correction history
 
 ### Workers / Services
 
@@ -94,6 +96,7 @@ Suggested fields:
 - Accent selection service
 - Correction analysis service
 - Session summary service
+- Optional retrieval indexing and query service for scenario packs, correction history, and reusable phrases
 
 ### Integrations
 
@@ -118,6 +121,7 @@ Recommended default stack, not a hard requirement:
 - Current default conversation model: DeepSeek, but keep the slot replaceable
 - AI workflow: use LangGraph directly as an in-app library for the conversation workflow layer; do not deploy a separate LangGraph server for the MVP
 - AI utilities: LangChain only where it adds value, such as prompt templates, provider adapters, structured output parsing, or future tool integration
+- Retrieval layer: optional RAG-style retrieval for scenario packs, user history, and correction memory; add it after the core voice loop is stable
 - Auth: local email/password or lightweight credentials-based auth for the MVP
 - Speech: browser microphone capture with STT/TTS provider abstractions and mock providers for development
 - Storage: cloud storage/persistence for synced history, corrections, preferences, and audio metadata; local mock data is acceptable for development
@@ -224,3 +228,4 @@ npm run dev
 - Live interruption may feel intrusive if overused
 - Bilingual subtitles may distract if shown too aggressively
 - Theme consistency must be handled through tokens, not hard-coded colors
+- Retrieval quality will depend on how scenario packs and correction history are structured and indexed

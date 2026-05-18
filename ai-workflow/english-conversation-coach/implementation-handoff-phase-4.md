@@ -18,6 +18,7 @@ Implement Phase 4 next:
 - more theme modes
 - accent expansion
 - review and retention features
+- optional retrieval support for scenario packs and correction memory
 
 ## Technology Decisions
 
@@ -36,6 +37,7 @@ Implement Phase 4 next:
 - social features
 - background listening
 - earlier phase work that is not yet complete
+- retrieval as a hard dependency for the main chat loop
 
 ## Required Commands
 
