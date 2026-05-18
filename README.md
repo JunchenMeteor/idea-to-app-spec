@@ -20,16 +20,22 @@ It is a workflow package that helps you:
 - detect repeated patterns
 - convert repeated work into reusable skills
 
+## When To Use Which Mode
+
+- Use **Explore mode** when the idea is still vague and you need help shaping the product.
+- Use **Package mode** when the product shape is stable and you want the full delivery package.
+- Use **Skill mining mode** when you want to review repeated workflows and draft reusable skills from chronicle records.
+
 ## What It Produces
 
 The main outputs are:
 
 - `spec.md` for product and technical direction
-- `plan.md` for execution steps and validation
+- `plan.md` for execution steps, pre-dev requirements, and validation
 - `one-shot-prompt.md` for direct AI app generation
 - `implementation-handoff.md` for the next coding agent
 - `chronicle/*.md` for work history
-- `skill.md` for reusable workflows
+- `skill-suggestions/<skill-name>.md` for reusable workflow drafts
 - template files for consistent use across tools
 
 ## Main Chain
@@ -66,6 +72,8 @@ ai-workflow/<project-slug>/
 
 This gives both the user and future AI agents one stable place to find the generated artifacts.
 
+`plan.md` should separate pre-dev requirements from the actual technical stack so build-start constraints do not get mistaken for implementation choices.
+
 ## What It Does
 
 Use it when you have a vague idea like:
@@ -82,12 +90,14 @@ The workflow guides the conversation through:
 4. MVP scope
 5. Data model
 6. Architecture and tech stack
-7. Security boundaries
-8. Development phases
-9. Validation criteria
-10. Final one-shot app generation prompt
-11. Implementation handoff
-12. Chronicle and skill suggestions when useful
+7. Technology decision rationale
+8. Pre-dev requirements / build-start constraints
+9. Security boundaries
+10. Development phases
+11. Validation criteria
+12. Final one-shot app generation prompt
+13. Implementation handoff
+14. Chronicle and skill suggestions when useful
 
 ## Repository Layout
 

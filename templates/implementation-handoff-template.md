@@ -13,9 +13,20 @@
 2. `plan.md`
 3. `one-shot-prompt.md`
 
+Read them in this order so the product scope, delivery constraints, and final prompt stay aligned.
+
 ## Start Scope
 
 Implement <phase or scope>.
+
+## Technology Decisions
+
+- Required:
+- Recommended:
+- Optional:
+- Explicitly deferred:
+- Provider boundaries:
+- Cost constraints:
 
 ## Do Not Implement Yet
 

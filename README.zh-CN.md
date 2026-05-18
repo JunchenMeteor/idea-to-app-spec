@@ -20,16 +20,22 @@
 - 识别重复工作模式
 - 把重复工作沉淀成可复用 skill
 
+## 什么时候用哪种模式
+
+- 想法还很模糊时，用 **Explore mode**
+- 产品形态已经比较稳定时，用 **Package mode**
+- 想从 chronicle 里提炼可复用流程时，用 **Skill mining mode**
+
 ## 它会输出什么
 
 主要产物包括：
 
 - `spec.md`：产品和技术方向
-- `plan.md`：执行步骤和验证计划
+- `plan.md`：执行步骤、前置要求和验证计划
 - `one-shot-prompt.md`：给 AI 直接生成项目的开发 prompt
 - `implementation-handoff.md`：给下一个 AI 编码 agent 的交接说明
 - `chronicle/*.md`：工作历史记录
-- `skill.md`：可复用工作流
+- `skill-suggestions/<skill-name>.md`：可复用工作流草案
 - 模板文件：保证不同工具输出一致
 
 ## 主链路
@@ -66,6 +72,8 @@ ai-workflow/<project-slug>/
 
 这样用户和后续 AI agent 都能在固定位置找到产物。
 
+`plan.md` 需要把前置要求和技术栈分开，避免把开始编码前的约束误写成实现选型。
+
 ## 它能做什么
 
 当你只有一个模糊想法时，例如：
@@ -82,12 +90,14 @@ ai-workflow/<project-slug>/
 4. MVP 范围
 5. 数据模型
 6. 架构和技术栈
-7. 安全边界
-8. 开发阶段
-9. 验证标准
-10. one-shot app generation prompt
-11. implementation handoff
-12. 必要时生成 chronicle 和 skill suggestion
+7. 技术选型依据
+8. 前置要求 / 开始编码前约束
+9. 安全边界
+10. 开发阶段
+11. 验证标准
+12. one-shot app generation prompt
+13. implementation handoff
+14. 必要时生成 chronicle 和 skill suggestion
 
 ## 仓库结构
 

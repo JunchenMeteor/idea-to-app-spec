@@ -89,10 +89,12 @@ The spec must include these sections:
 6. Data model
 7. Pages / APIs / workers / integrations
 8. Architecture and tech stack
-9. Security and privacy boundaries
-10. Development phases
-11. Validation commands and acceptance criteria
-12. Risks and open questions
+9. Technology decision rationale
+10. Pre-dev requirements / build-start constraints
+11. Security and privacy boundaries
+12. Development phases
+13. Validation commands and acceptance criteria
+14. Risks and open questions
 
 Use this core-loop pattern:
 
@@ -105,9 +107,10 @@ The task plan must include:
 1. Summary
 2. Scope
 3. Implementation phases
-4. Issue/PR or task breakdown
-5. Validation steps
-6. Risks and dependencies
+4. Technology choices and alternatives
+5. Issue/PR or task breakdown
+6. Validation steps
+7. Risks and dependencies
 
 The one-shot prompt must include:
 
@@ -118,7 +121,9 @@ The one-shot prompt must include:
 ## Core Workflow
 ## Core Features
 ## Data Model
+## Pre-Dev Requirements
 ## Tech Stack
+## Technology Decision Rationale
 ## Security Boundaries
 ## UI Requirements
 ## Non-Goals
@@ -146,6 +151,14 @@ Suggest a skill when:
 - Prefer MVP loop clarity over feature breadth.
 - Define non-goals early to prevent scope drift.
 - Choose boring, proven architecture unless the user has a strong reason otherwise.
+- Distinguish hard requirements from recommended defaults. Do not treat example stacks as mandatory unless the user says so.
+- Separate pre-dev requirements from the technology stack. Pre-dev requirements are build-start instructions; the stack is the implementation choice.
+- When the product needs login, mobile access, or cross-device sync, prefer cloud-accessible persistence over local-only storage.
+- For AI apps, explicitly choose which layer is being used: HTTP API, provider SDK, AI framework, low-code platform, or AI coding-tool SDK.
+- Keep model, STT, TTS, and external service calls behind adapters so provider changes do not rewrite product logic.
+- Use LangGraph when the app has stateful, branching, cyclic AI workflows. It can run as an in-app library; do not require a separate LangGraph server unless the user needs platform-style deployment.
+- Use LangChain only when it removes real complexity, such as prompt templates, structured output parsing, provider adapters, tools, RAG, or MCP integration.
+- Keep low-code platforms and AI coding-tool SDKs out of user-facing runtime unless the product explicitly requires them.
 - Make data sensitivity explicit before recommending AI, cloud, logging, or vector search.
 - Split large projects into phases; do not ask one agent to build everything at once unless the user explicitly wants a one-shot generation prompt.
 - Include validation commands whenever the target stack is known.
