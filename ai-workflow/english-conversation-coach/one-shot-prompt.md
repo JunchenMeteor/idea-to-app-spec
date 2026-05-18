@@ -67,6 +67,7 @@ user logs in -> user selects or starts a scenario -> app starts an active voice 
 9. History and review
    - Save sessions, turns, correction items, and summaries for logged-in users.
    - Provide a session review page and correction history page.
+   - Optionally support retrieval-enhanced scenario packs and correction memory for later phases.
 
 ## Data Model
 
@@ -102,6 +103,7 @@ Recommended default:
 - Current default conversation model: DeepSeek
 - AI workflow: use LangGraph directly as an in-app library for the conversation workflow layer; do not deploy a separate LangGraph server for the MVP
 - AI utilities: LangChain only where it adds clear value, such as prompt templates, provider adapters, structured output parsing, or future tool integration
+- Retrieval layer: optional RAG-style retrieval over scenario packs, user history, and correction memory; keep it out of the first voice-loop milestone unless it clearly helps the MVP
 - AI provider mode: keep raw HTTP API calls inside provider adapters only; prefer official SDKs or Vercel AI SDK where practical
 - Testing: unit tests for services and basic UI tests for session state
 
@@ -164,6 +166,7 @@ AI development mode guidance:
 7. Include focused tests for session lifecycle, microphone state, preferences, and correction generation.
 8. Include `.env.local.example` for AI model, STT, and TTS provider keys.
 9. Before implementation, verify current official documentation for whichever stack is selected. If using the recommended stack, verify Next.js, Supabase Auth/Postgres/Storage, Vercel AI SDK, LangGraph TypeScript/JavaScript, shadcn/ui, and selected STT/TTS provider APIs. If Firecrawl, Context7, or similar documentation tools are available, use them and summarize what was verified.
+10. Treat retrieval/RAG as an optional enhancement layer for scenario packs and correction memory, not as a required dependency for the first runnable voice loop.
 
 ## Validation Requirements
 
