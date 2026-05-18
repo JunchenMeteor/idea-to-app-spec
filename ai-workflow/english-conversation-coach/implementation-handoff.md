@@ -10,6 +10,8 @@ English Conversation Coach
 2. `ai-workflow/english-conversation-coach/plan.md`
 3. `ai-workflow/english-conversation-coach/one-shot-prompt.md`
 
+For later phases, use the matching phase-specific handoff file in the same folder.
+
 ## Start Scope
 
 Implement Phase 1 first:
