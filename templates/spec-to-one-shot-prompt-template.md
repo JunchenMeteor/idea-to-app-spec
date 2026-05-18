@@ -38,8 +38,19 @@ At minimum, implement:
 
 Include fields, relationships, status enums, and deletion rules.
 
+## Pre-Dev Requirements
+
+These are instructions for the coding agent before implementation starts. They are not the technology stack.
+
+1. <Design or frontend review requirement>
+2. <API/provider documentation verification requirement>
+3. <Framework documentation verification requirement>
+
 ## Tech Stack
 
+- Hard requirements:
+- Recommended defaults:
+- Replaceable choices:
 - Framework:
 - Language:
 - UI:
@@ -47,6 +58,20 @@ Include fields, relationships, status enums, and deletion rules.
 - Database:
 - AI / speech / external services:
 - Testing:
+
+## Technology Decision Rationale
+
+- Why this stack fits the MVP:
+- Cost-control decisions:
+- Cloud/local tradeoffs:
+- AI application mode:
+- AI frameworks and development modes considered:
+- Why the selected framework is the best fit:
+- Provider abstraction boundaries:
+- Frameworks introduced and why:
+- Frameworks intentionally deferred:
+- Hard requirements preserved from examples:
+- Recommended defaults that can still change:
 
 ## Security Boundaries
 
