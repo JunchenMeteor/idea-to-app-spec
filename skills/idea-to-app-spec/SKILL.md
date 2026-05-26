@@ -43,6 +43,42 @@ ai-workflow/<project-slug>/
 
 If the current repository already has a better conventional docs folder, ask once before changing the output location. Otherwise use `ai-workflow/<project-slug>/`.
 
+## Entry Gate
+
+触发此 skill 后，先确定用户要用哪个模式，再执行。
+
+按以下优先级选择交互方式：
+
+1. **有 Bash 工具且 Node.js 可用**：执行 `node scripts/menu.js`，读取输出后继续。
+2. **Claude Code UI**：调用 `AskUserQuestion` 展示选项。
+3. **纯对话环境**：输出以下文本菜单，等待用户回复数字或关键词：
+
+```
+你想做什么？/ What do you want to do?
+
+1. Explore — 从模糊想法开始探索 / shape a vague idea
+2. Package — 生成完整产品 spec 和交付包 / full spec and delivery package
+3. One-shot — 只生成一键开发 prompt / one-shot dev prompt only
+4. Skill mining — 从历史记录挖掘可复用 skill / mine chronicles for reusable skills
+5. 继续上次进度 / Continue where we left off
+6. 其他 / Other (describe freely)
+```
+
+如果用户触发时已说清楚意图，跳过菜单直接进入对应模式。用户可以随时用数字、关键词或自由描述回复，AI 理解意图后执行。
+
+## Step Closure
+
+每个阶段产出后，AI 必须：
+
+1. 说明产出了什么文件、放在哪里（1-2 句）
+2. 给出下一阶段建议
+3. 等待用户确认，不自动继续
+
+用户可以：
+- 说"继续"/"continue" → 执行下一阶段
+- 说"重来"/"redo" → 询问哪里不满意，重新执行当前阶段
+- 说"回到菜单"/"menu" → 重新走 Entry Gate
+
 ## Operating Modes
 
 Choose one mode based on the user request.

@@ -104,24 +104,34 @@ ai-workflow/<project-slug>/
 ```text
 idea-to-app-spec/
 ├── skills/
-│   └── idea-to-app-spec/          # Codex skill package
+│   └── idea-to-app-spec/
 │       ├── SKILL.md
 │       ├── agents/openai.yaml
 │       └── references/
+├── scripts/
+│   └── menu.js
 ├── docs/
-│   ├── claude-code-usage.md
-│   ├── chronicle-skill-workflow-plan.md
-│   ├── chronicle-skill-workflow-usage.md
-│   └── prompt-workflow.md
 ├── templates/
-│   ├── chronicle-template.md
-│   ├── implementation-handoff-template.md
-│   ├── skill-suggestion-template.md
-│   ├── spec-to-one-shot-prompt-template.md
-│   ├── spec-to-task-template.md
-│   └── app-generation-prompt.md
 └── README.md
 ```
+
+## 交互式菜单
+
+安装后，AI 触发 skill 时会自动调用 `scripts/menu.js` 弹出交互菜单（需要 Node.js）：
+
+```
+你想做什么？
+（↑↓ 移动，Enter 确认，Ctrl+C 退出）
+
+❯ Explore — 从模糊想法开始探索
+  Package — 生成完整产品 spec 和交付包
+  One-shot — 只生成一键开发 prompt
+  ...
+  其他（手动输入）
+```
+
+不支持交互终端时，AI 会输出文本编号菜单，回复数字即可。
+语言跟随系统环境变量（`LANG`），也可以用 `MENU_LANG=zh node scripts/menu.js` 强制中文。
 
 ## Codex 安装
 
